@@ -10,7 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -109,8 +109,7 @@ string CreateJWT(User user, IConfiguration configuration)
      
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
@@ -118,13 +117,17 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty;
     });
 
-}
+
 
 app.UseCors("MyPolicy");
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+
+app.MapGet("/", (HttpContext context) => "Todo API is running");
+
 app.MapGet("/items",[Authorize]  async (ToDoDbContext db) =>
 {
     try
@@ -240,5 +243,7 @@ app.MapPost("/api/auth/register", async (ToDoDbContext db, IConfiguration config
     var jwt = CreateJWT(newUser, configuration); 
     return Results.Ok(new { Token = jwt });
 });
+
+
 
 app.Run();
