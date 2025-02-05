@@ -3103,11 +3103,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoApi\\TodoApi.csproj",
+      "projectUniqueName": "c:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoServer\\TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "C:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoApi\\TodoApi.csproj",
+      "projectPath": "c:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoServer\\TodoApi.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoApi\\obj\\",
+      "outputPath": "c:\\Users\\user1\\Desktop\\ציפי לימודים שנה ב\\פרקטיקוד\\ToDoList\\TodoServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
