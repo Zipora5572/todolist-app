@@ -42,7 +42,9 @@ function AppHeader() {
   }, [location.key]);
 
   return (
-    <AppBar position="static">
+   // Source: components/AppHeader.js
+<AppBar position="static" sx={{ background: 'linear-gradient(to right, #1976d2, #dc004e)', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}>
+
       <Container maxWidth="false">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

@@ -16,7 +16,21 @@ function Copyright() {
     );
   }
 
-const theme = createTheme();
+ 
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#1976d2', // A modern blue
+      },
+      secondary: {
+        main: '#dc004e', // A modern pink
+      },
+      background: {
+        default: '#f4f6f8', // Light background for better contrast
+      },
+    },
+  });
 
 const Layout = ({ children }) => {
   return (

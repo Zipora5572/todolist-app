@@ -71,14 +71,23 @@ export default function Login() {
             control={<Checkbox value="remember" color="primary" />}
             label="זכור אותי"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            התחברות
-          </Button>
+          
+<Button
+  type="submit"
+  fullWidth
+  variant="contained"
+  sx={{
+    mt: 3,
+    mb: 2,
+    borderRadius: '20px',
+    '&:hover': {
+      backgroundColor: '#dc004e', 
+    },
+  }}
+>
+  התחברות
+</Button>
+
           <Grid container>
             <Grid item>
               <Link href="/register" variant="body2">
