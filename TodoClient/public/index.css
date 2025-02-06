@@ -1,23 +1,23 @@
 html,
-/* body {
-    margin: 0;
-    padding: 0;
-} */
- /* Source: index.css */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f6f8;
     margin: 0;
     padding: 0;
-  }
-  
-  .todoapp {
-    max-width: 600px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
+}
+ /* Source: index.css */
+/* body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.todoapp {
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+} */
+
 
 button {
     margin: 0;

@@ -1,4 +1,3 @@
-
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using TodoApi;
@@ -144,10 +143,8 @@ app.MapGet("/items",[Authorize]  async (ToDoDbContext db) =>
 
 app.MapPost("/items",[Authorize]  async (ToDoDbContext db,[FromBody] Item item) =>
 {
-
     try
-    {
-      
+    {  
         db.Items.Add(item);
         await db.SaveChangesAsync();
         return Results.Created($"/items/{item.Id}", item);
