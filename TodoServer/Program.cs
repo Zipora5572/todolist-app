@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("tasks_db"),
+    options.UseMySql(builder.Configuration.GetConnectionString("TodoDB"),
     new MySqlServerVersion(new Version(8, 0, 41))));
 
 
