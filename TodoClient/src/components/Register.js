@@ -39,7 +39,7 @@ function Register() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          הרשמה
+          Sign Up
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -47,7 +47,7 @@ function Register() {
             required
             fullWidth
             id="username"
-            label="שם משתמש"
+            label="username"
             name="username"
             autoComplete="true"
             autoFocus
@@ -58,28 +58,29 @@ function Register() {
             required
             fullWidth
             name="password"
-            label="סיסמה"
+            label="password"
             type="password"
             id="password"
             autoComplete="current-password"
             onChange={(event) => setPassword(event.target.value)}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="זכור אותי"
-          />
+         <FormControlLabel
+  control={<Checkbox value="remember" color="primary" />}
+  label={<Typography variant="body2" sx={{ fontSize: '0.8rem' }}>Remember me</Typography>} // Smaller text
+/>
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            textTransform="none"
           >
-            הרשמה
+            Sign Up
           </Button>
           <Grid container>
             <Grid item>
               <Link href="/login" variant="body2">
-                {"יש לך כבר חשבון? להתחברות"}
+              {"Already have an account? Sign In"}
               </Link>
             </Grid>
           </Grid>

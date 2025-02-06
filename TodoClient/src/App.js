@@ -9,15 +9,11 @@ import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 
 
-const cacheRtl = createCache({
-  key: 'muirtl',
-  stylisPlugins: [prefixer, rtlPlugin],
-});
 
 function App() {
   return (
-    <div className="App">
-      <CacheProvider value={cacheRtl}>
+    <>
+      
         <Layout>
           <Routes>
             {AppRoutes.map((route, index) => {
@@ -26,8 +22,8 @@ function App() {
             })}
           </Routes>
         </Layout>
-        </CacheProvider>
-    </div>
+        
+    </>
   );
 }
 

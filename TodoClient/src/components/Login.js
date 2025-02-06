@@ -13,8 +13,10 @@ import { useNavigate } from "react-router-dom";
 import Service from "../services/authService";
 import { useState } from "react";
 import Container from "@mui/material/Container";
+import { useTheme } from '@mui/material/styles';
 
 export default function Login() {
+  const theme = useTheme();
   const [name, setName] = useState("default");
   const [password, setPassword] = useState("123456");
 
@@ -40,7 +42,7 @@ export default function Login() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          התחברות
+          Sign In
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -48,11 +50,10 @@ export default function Login() {
             required
             fullWidth
             id="name"
-            label="כתובת מייל"
+            label="name"
             name="username"
             autoComplete="true"
             autoFocus
-            helperText={"שם משתמש ברירת מחדל: default"}
             onChange={(event) => setName(event.target.value)}
           />
           <TextField
@@ -60,38 +61,39 @@ export default function Login() {
             required
             fullWidth
             name="password"
-            label="סיסמה"
+            label="password"
             type="password"
             id="password"
             autoComplete="current-password"
-            helperText={"סיסמה ברירת מחדל: 123456"}
             onChange={(event) => setPassword(event.target.value)}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="זכור אותי"
-          />
+         <FormControlLabel
+  control={<Checkbox value="remember" color="primary" />}
+  label={<Typography variant="body2" sx={{ fontSize: '0.8rem' }}>Remember me</Typography>} // Smaller text
+/>
           
-<Button
+          <Button
   type="submit"
   fullWidth
   variant="contained"
   sx={{
     mt: 3,
     mb: 2,
-    borderRadius: '20px',
+    backgroundColor: theme.palette.primary.main, // Use primary color
+    color: '#FFFFFF', // White text for contrast
     '&:hover': {
-      backgroundColor: '#dc004e', 
+      backgroundColor: theme.palette.secondary.main, 
     },
+    textTransform: 'none',
   }}
 >
-  התחברות
+  Sign In
 </Button>
 
           <Grid container>
             <Grid item>
               <Link href="/register" variant="body2">
-                {"אין לך עדין חשבון? להרשמה"}
+                {"Dont have an account? Sign up"}
               </Link>
             </Grid>
           </Grid>

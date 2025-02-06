@@ -9,45 +9,44 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Link from "@mui/material/Link";
 import { useEffect, useState } from "react";
 import authService from "../services/authService";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router'
+import { useLocation } from 'react-router';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import { useTheme } from '@mui/material/styles';
+import TaskIcon from '@mui/icons-material/Task';
 
 const pages = [
-//   { title: "about", route: "/about" },
-  { title: "Tasks", route: "/toDoList" },
+  { title: "Manage Your Tasks", route: "/toDoList" ,icon: <TaskIcon />},
 ];
 
 function AppHeader() {
+  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
- 
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const [loginUser, setLoginUser] = useState(null);
   useEffect(() => {
-    console.log('render app header', loginUser)
     setLoginUser(authService.getLoginUser());
   }, [location.key]);
 
   return (
-   // Source: components/AppHeader.js
-<AppBar position="static" sx={{ background: 'linear-gradient(to right, #1976d2, #dc004e)', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}>
-
+    <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' ,borderBottom:'3px solid #1976d2'}}>
       <Container maxWidth="false">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <PlaylistAddCheckIcon sx={{ color: theme.palette.primary.main, fontSize: '32px' }} />
           <Typography
             variant="h6"
             noWrap
@@ -56,14 +55,14 @@ function AppHeader() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
+              color: theme.palette.primary.main,
               textDecoration: "none",
+              marginRight: "20px",
+              fontWeight: "bold",
+              fontSize: '1.5rem' // Increased font size for better visibility
             }}
           >
-            לוגו
+            Todo List
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -97,14 +96,14 @@ function AppHeader() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                  <Link style={{ textDecoration: "none" }} href={page.route}>
+                  <Link style={{ textDecoration: "none", textTransform: "none", color: theme.palette.primary.main }} href={page.route}>
                     <Typography textAlign="center">{page.title}</Typography>
                   </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -115,46 +114,94 @@ function AppHeader() {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: theme.palette.primary.main,
               textDecoration: "none",
             }}
           >
-            לוגו
+            Todo List
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link style={{ textDecoration: "none" }} href={page.route}>
+              <Link style={{ textDecoration: "none", marginLeft: '30px', color: theme.palette.primary.main }} href={page.route} key={page.title}>
                 <Button
                   key={page.title}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: theme.palette.secondary,
+                    display: "block",
+                    textTransform: "none",
+                    fontWeight: "bold",
+                    '&:hover': {
+                      color: theme.palette.secondary
+                    }
+                  }}
                 >
                   {page.title}
+                  
                 </Button>
               </Link>
             ))}
           </Box>
 
           {loginUser ? (
-            <div>
-              {loginUser.name} מחובר | 
-              <Button color="inherit" onClick={()=>{
-                authService.logout();
-                navigate('/')
-              }}>התנתקות</Button>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Typography variant="body1" sx={{ color: theme.palette.primary.main, marginRight: '10px' }}>
+                {loginUser.name}
+              </Typography>
+              <Button 
+                sx={{
+                  borderRadius: '50px',
+                  padding: '10px 20px',
+                  backgroundColor: 'white',
+                  width: '110px',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                  boxShadow: '0px',
+                  border: '1px solid',
+                  borderColor: theme.palette.primary.main, // Border color
+                  transition: 'all 0.3s ease-in-out',
+                  color: theme.palette.primary.main,
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.main, // Change background on hover
+                    color: 'white', // Change text color on hover
+                  }
+                }} // Hover effect
+                onClick={() => {
+                  authService.logout();
+                  navigate('/');
+                }}>Log out
+              </Button>
             </div>
           ) : (
-            <div>
-            <Button color="inherit" onClick={()=>{
-                navigate('/login')
-              }}>התחברות</Button>
-            </div>
+            <Button
+              sx={{
+                borderRadius: '50px',
+                padding: '10px 20px',
+                backgroundColor: theme.palette.primary.main,
+                width: '110px',
+                fontWeight: 'bold',
+                textTransform: 'none',
+                boxShadow: '0px',
+                border: '1px solid',
+               
+                transition: 'all 0.3s ease-in-out',
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: 'white', // Change background on hover
+                  color:  theme.palette.primary.main,
+                }
+              }}
+              onClick={() => {
+                navigate('/login');
+              }}>Login</Button>
           )}
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
+
 export default AppHeader;
