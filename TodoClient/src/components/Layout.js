@@ -9,7 +9,7 @@ function Copyright() {
     return (
       <Typography variant="body2" color="text.secondary" align="center">
         {"Copyright © "}
-          Auth Sample
+ToDoList.com
         {new Date().getFullYear()}
         {"."}
       </Typography>
