@@ -13,26 +13,9 @@ using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddDbContext<ToDoDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("TodoDB"),
-//     new MySqlServerVersion(new Version(8, 0, 41))));
-
-
-var optionsBuilder = new DbContextOptionsBuilder<ToDoDbContext>();
-optionsBuilder.UseMySql("server=byxqxb0rhlzosxapbmaz-mysql.services.clever-cloud.com;user=uvgfmyowxatnfthn;password=kFmiRY15sZBOIfkx7FHO;database=byxqxb0rhlzosxapbmaz", new MySqlServerVersion(new Version(8, 0, 41)));
-
-using (var context = new ToDoDbContext(optionsBuilder.Options))
-{
-    try
-    {
-        context.Database.OpenConnection();
-        Console.WriteLine("Connection successful!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Connection failed: {ex.Message}");
-    }
-}
+builder.Services.AddDbContext<ToDoDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("TodoDB"),
+    new MySqlServerVersion(new Version(8, 0, 41))));
 
 
 builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
